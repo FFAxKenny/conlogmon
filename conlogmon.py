@@ -15,6 +15,11 @@ def is_connected_to_internet():
      pass
   return False
 
+
+filename = time.strftime("%Y-%m-%d_%H-%M-%S") + "_netlog.csv"
+print("Start"),
+print filename
+
 while(True):
     now = time.strftime("%c")
     connection_status = is_connected_to_internet()
@@ -24,10 +29,9 @@ while(True):
     print(connection_status)
 
     row = {'time':now, 'connection_status':connection_status}
-    with open('network_log.csv', 'a') as f:
+    with open(filename, 'a') as f:
         writer = csv.DictWriter(f, fieldnames=row.keys())
         writer.writerows([row])
-
     time.sleep(1)
 
 
