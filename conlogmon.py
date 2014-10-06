@@ -24,12 +24,11 @@ while(True):
     print(connection_status)
 
     row = {'time':now, 'connection_status':connection_status}
-    with open('some.csv', 'a') as f:
+    with open('network_log.csv', 'a') as f:
         writer = csv.DictWriter(f, fieldnames=row.keys())
         writer.writerows([row])
 
     time.sleep(1)
-
 
 
 
